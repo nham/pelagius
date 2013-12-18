@@ -1,35 +1,37 @@
 import std.stdio;
 
 void main() {
+    int[] xs = [-5, -1, 0, 1, 2, 9, 17];
+    writeln(binary_search(xs, 17) );
 
 }
 
-struct NarrowState {
-    int[] xs;
-    int loc = -1;
+int binary_search(int[] xs, int v) {
+    if (xs.length == 0) return -1;
 
-    this(int[] xs, int loc) {
-        this.xs = xs;
-        this.loc = loc;   
-    }
-}
+    int mid = cast(int) xs.length / 2;
 
-NarrowState narrow(int[] xs, int v) {
-    if (xs.length == 0) return xs;
-
-    int mid = xs.length / 2;
     if (xs[mid] > v) {
-        return xs[0 .. mid];
+        return binary_search( xs[0 .. mid], v );
     } else if(xs[mid] < v) {
-        return xs[(mid+1) .. $];
+        auto x = binary_search( xs[(mid+1) .. $], v );
+        if (x == -1) {
+            return -1;
+        } else {
+            return mid + 1 + x;
+        }
     } else {
-        
+        return mid;
     }
-    // if len == 2k + 1,
-    // len / 2 = k. since arrays are 0-indexed, [0, k-1] [k, 2k]
-    // [6, 7, 8, 9]
-    // mid == ^
-    //
-    // [5, 6, 7, 8, 9]
-    //mid ==  ^
+}
+
+unittest {
+    assert(binary_search([], 5) == -1);
+    int[] xs = [-5, -1, 0, 1, 2, 9, 17];
+    assert(binary_search(xs, -5) == 0);
+    assert(binary_search(xs, 17) == 6);
+    assert(binary_search(xs, 2) == 4);
+    assert(binary_search(xs, -1) == 1);
+    assert(binary_search(xs, -2) == -1);
+    assert(binary_search(xs, 55) == -1);
 }
