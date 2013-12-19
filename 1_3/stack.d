@@ -29,7 +29,7 @@ class Stack(Item) {
 }
 */
 
-class FixedStack(Item) {
+class ArrayStack(Item) {
     private Item[] stack;
     private int N;
 
@@ -42,6 +42,7 @@ class FixedStack(Item) {
     }
 
     Item pop() {
+        // do i need to address "loitering"?
         if (N > 0 && stack.length / 4 == N) {
             stack.length /= 2;
         }
