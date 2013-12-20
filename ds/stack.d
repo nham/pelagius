@@ -38,7 +38,7 @@ class LLStack(Item) {
     }
 
     bool isEmpty() {
-        return first == null;
+        return first is null;
     }
 
     int size() {
