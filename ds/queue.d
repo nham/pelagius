@@ -1,20 +1,13 @@
+import ds.linked_list;
+
 class LLQueue(Item) {
-    private class Node(Item) {
-        Item item;
-        Node next;
-
-        this(Item i) {
-            this.item = i;
-        }
-    }
-
-    private Node first;
-    private Node last;
+    private LinkedList!Item first;
+    private LinkedList!Item last;
     private int N;
 
     void enqueue(Item item) {
-        Node!Item oldlast = last;
-        last = new Node!Item(item);
+        LinkedList!Item oldlast = last;
+        last = new LinkedList!Item(item);
 
         if (isEmpty()) {
             first = last;

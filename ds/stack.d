@@ -1,4 +1,4 @@
-import std.stdio;
+import std.stdio, ds.linked_list;
 
 void main() {
     auto x = new ArrayStack!int;
@@ -10,21 +10,12 @@ void main() {
 
 }
 class LLStack(Item) {
-    private class Node(Item) {
-        Item item;
-        Node next;
-
-        this(Item i) {
-            this.item = i;
-        }
-    }
-
-    private Node!Item first;
+    private LinkedList!Item first;
     private int N;
 
     void push(Item item) {
         auto oldfirst = first;
-        first = new Node!Item(item);
+        first = new LinkedList!Item(item);
         first.next = oldfirst;
 
         N += 1;
