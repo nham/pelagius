@@ -60,7 +60,7 @@ class ArrayStack(Item) {
 
     Item pop() {
         // do i need to address "loitering"?
-        if (N > 0 && stack.length / 4 == N) {
+        if (!isEmpty() && stack.length / 4 == N) {
             stack.length /= 2;
         }
         N -= 1;
