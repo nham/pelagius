@@ -38,6 +38,8 @@ double eval(string[] expr) {
                 case "/":
                     vals.push(v1 / v2);
                     break;
+                default:
+                    throw new Exception("unrecognized operator");
             }
             
         }
