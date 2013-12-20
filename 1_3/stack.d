@@ -1,7 +1,7 @@
 import std.stdio;
 
 void main() {
-    auto x = new FixedStack!int;
+    auto x = new ArrayStack!int;
     x.push(2);
     x.push(3);
     x.push(4);
@@ -9,25 +9,42 @@ void main() {
     writeln(x.size());
 
 }
-/*
-class Stack(Item) {
-    void push(Item item) {
+class LLStack(Item) {
+    private class Node(Item) {
+        Item item;
+        Node next;
 
+        this(Item i) {
+            this.item = i;
+        }
+    }
+
+    private Node first;
+    private int N;
+
+    void push(Item item) {
+        Node oldfirst = first;
+        first = new Node!Item(item);
+        first.next = oldfirst;
+
+        N += 1;
     }
 
     Item pop() {
-
+        Item popped = first.item;
+        first = first.next;
+        N -= 1;
+        return popped;
     }
 
     bool isEmpty() {
-
+        return first == null;
     }
 
     int size() {
-
+        return N;
     }
 }
-*/
 
 class ArrayStack(Item) {
     private Item[] stack;
