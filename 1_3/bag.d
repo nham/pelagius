@@ -1,13 +1,17 @@
+import queue;
 class Bag(Item) {
-    void add(Item item) {
+    private LLQueue!Item bag = new LLQueue!Item;
 
+    void add(Item item) {
+        bag.enqueue(item);
     }
 
     bool isEmpty() {
-
+        return bag.isEmpty();
     }
 
     int size() {
+        return bag.size();
 
     }
 }
