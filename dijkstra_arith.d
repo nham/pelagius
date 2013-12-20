@@ -1,14 +1,16 @@
-import std.stdio, std.conv, stack;
+import std.stdio, std.conv, ds.stack;
 
 void main() {
-    Stack!string ops = new Stack!string;
-    Stack!double vals = new Stack!double;
+    auto inp = ["(", "5", "+", "(", "7", "*", "3", ")", ")"];
+    writeln( eval(inp) );
 }
 
 
+// TODO: parameterize over the stacks so that we can use LLStack and ArrayStack
+// without writing two eval functions?
 double eval(string[] expr) {
-    Stack!string ops = new Stack!string;
-    Stack!double vals = new Stack!double;
+    LLStack!string ops = new LLStack!string;
+    LLStack!double vals = new LLStack!double;
 
     foreach(ele; expr) {
         if (ele == "(")
