@@ -19,11 +19,11 @@ class LLStack(Item) {
         }
     }
 
-    private Node first;
+    private Node!Item first;
     private int N;
 
     void push(Item item) {
-        Node oldfirst = first;
+        auto oldfirst = first;
         first = new Node!Item(item);
         first.next = oldfirst;
 
