@@ -5,29 +5,44 @@ class Node(Item) {
     this(Item i) {
         this.item = i;
     }
+
+    // The only degenerate case is when we are on the last node. Then it is quite
+    // impossible to remove the next one.
+    static void removeAfter(Node!Item n) {
+        if (n.next !is null) {
+            n.next = n.next.next;
+        }
+    }
 }
 
+class LinkedList(Item) {
+    Node!Item first;
 
-// TODO: figure out if we need ref
-void deleteNth(Node n, int k) {
-    auto i = 0;
-    auto node = n;
-    for(; next !is null, i < k-1; i++, node = node.next) {}
-
-    if (node !is null) {
-        node = removeAfter(node);
+    void add(Item i) {
+        Node!Item oldfirst = first;
+        first = new Node!Item(i);
+        first.next = oldfirst;
     }
 
-    return n;
-}
-
-void removeAfter(Node!Item n) {
-    if (n.next !is null) {
-        n.next = n.next.next;
+    void delete() {
+        if (first.next !is null) {
+            first = first.next;
+        }
     }
 
-    return n;
+    void deleteNth(int N) {
+        auto i = 0;
+        auto node = first;
+        // at the end:
+        //  -- if N == 0, loop never executes
+        for(; next !is null, i < N-1; i++, node = node.next) {}
+
+        if (node !is null) {
+            node = removeAfter(node);
+        }
+    }
 }
+
 
 
 class DoubleNode {
