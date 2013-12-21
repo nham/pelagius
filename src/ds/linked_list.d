@@ -97,6 +97,10 @@ class DoublyLinkedList(Item) {
     DoubleNode!Item first;
     DoubleNode!Item last;
 
+    bool isEmpty() {
+        return first is null;
+    }
+
     void addBeginning(Item i) {
         auto oldfirst = first;
         first = new DoubleNode!Item(i);
