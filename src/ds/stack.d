@@ -3,26 +3,23 @@ module ds.stack;
 import ds.linked_list;
 
 class LLStack(Item) {
-    private Node!Item first;
+    private LinkedList!Item list;
     private int N;
 
     void push(Item item) {
-        auto oldfirst = first;
-        first = new Node!Item(item);
-        first.next = oldfirst;
-
+        list.addNode(item);
         N += 1;
     }
 
     Item pop() {
-        Item popped = first.item;
-        first = first.next;
+        Item popped = list.first.item;
+        list.deleteNode();
         N -= 1;
         return popped;
     }
 
     bool isEmpty() {
-        return first is null;
+        return list.first is null;
     }
 
     int size() {

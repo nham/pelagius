@@ -43,10 +43,10 @@ class LinkedList(Item) {
         auto node = first;
         // at the end:
         //  -- if N == 0, loop never executes
-        for(; next !is null, i < N-1; i++, node = node.next) {}
+        for(; node !is null, i < N-1; i++, node = node.next) {}
 
         if (node !is null) {
-            node = Node.removeAfter(node);
+            node = Node!Item.removeAfter(node);
         }
     }
 }
