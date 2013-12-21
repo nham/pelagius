@@ -1,4 +1,6 @@
-import std.stdio, std.conv, ds.stack;
+import std.stdio;
+import std.conv : to;
+import ds.stack;
 
 void main() {
     auto inp = ["(", "5", "+", "(", "7", "*", "3", ")", ")"];
