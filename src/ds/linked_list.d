@@ -46,6 +46,7 @@ class LinkedList(Item) {
     }
 
     void deleteBeginning() {
+        // If already empty, we can't do anything
         if (first is last) {
             first = last = null;
         } else if (!isEmpty()) {
@@ -55,14 +56,12 @@ class LinkedList(Item) {
 
     void deleteNth(int N) {
         if (N == 0) {
-            deleteNode();
+            deleteBeginning();
             return;
         }
 
         auto i = 0;
         auto node = first;
-        // at the end:
-        //  -- if N == 0, loop never executes
         for(; node !is null, i < N-1; i++, node = node.next) {}
 
         if (node !is null) {

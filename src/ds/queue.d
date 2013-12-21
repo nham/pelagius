@@ -6,6 +6,10 @@ class LLQueue(Item) {
     private LinkedList!Item list;
     private int N;
 
+    this() {
+        list = new LinkedList!Item;
+    }
+
     void enqueue(Item item) {
         list.addEnd(item);
         N += 1;
