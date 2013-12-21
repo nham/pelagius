@@ -7,13 +7,13 @@ class LLStack(Item) {
     private int N;
 
     void push(Item item) {
-        list.addNode(item);
+        list.addBeginning(item);
         N += 1;
     }
 
     Item pop() {
         Item popped = list.first.item;
-        list.deleteNode();
+        list.deleteBeginning();
         N -= 1;
         return popped;
     }
