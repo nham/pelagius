@@ -1,10 +1,14 @@
 import std.stdio;
 import std.conv : to;
+import std.array;
 import ds.stack;
 
-void main() {
-    auto inp = ["(", "5", "+", "(", "7", "*", "3", ")", ")"];
-    writeln( eval(inp) );
+void main(string[] args) {
+    auto inp1 = replace(replace(args[1], ")", " )"), "(", "( ");
+    auto inp2 = split(inp1);
+    //auto inp = ["(", "5", "+", "(", "7", "*", "3", ")", ")"];
+    writeln("parsed input: ", inp2);
+    writeln( eval(inp2) );
 }
 
 
