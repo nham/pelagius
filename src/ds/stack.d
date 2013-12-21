@@ -6,6 +6,10 @@ class LLStack(Item) {
     private LinkedList!Item list;
     private int N;
 
+    this() {
+        list = new LinkedList!Item;
+    }
+
     void push(Item item) {
         list.addBeginning(item);
         N += 1;
