@@ -20,20 +20,20 @@ class Node(Item) {
 class LinkedList(Item) {
     Node!Item first;
 
-    void add(Item i) {
+    void addNode(Item i) {
         Node!Item oldfirst = first;
         first = new Node!Item(i);
         first.next = oldfirst;
     }
 
-    void delete() {
+    void deleteNode() {
         if (first !is null) {
             first = first.next;
         } }
 
     void deleteNth(int N) {
         if (N == 0) {
-            delete();
+            deleteNode();
             return;
         }
 
