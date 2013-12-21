@@ -1,7 +1,6 @@
 module ds.stack;
 
-import std.stdio, 
-       ds.linked_list;
+import ds.linked_list;
 
 class LLStack(Item) {
     private Node!Item first;
