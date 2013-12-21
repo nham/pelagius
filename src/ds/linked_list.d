@@ -21,17 +21,37 @@ class Node(Item) {
 
 class LinkedList(Item) {
     Node!Item first;
+    Node!Item last;
 
-    void addNode(Item i) {
+    bool isEmpty() {
+        return first is null;
+    }
+
+    void addBeginning(Item i) {
         Node!Item oldfirst = first;
         first = new Node!Item(i);
         first.next = oldfirst;
     }
 
-    void deleteNode() {
-        if (first !is null) {
+    void addEnd(Item i) {
+        bool empty = isEmpty();
+        Node!Item oldlast = last;
+        last = new Node!Item(i);
+
+        if (!empty) {
+            oldlast.next = last;
+        } else {
+            first = last;
+        }
+    }
+
+    void deleteBeginning() {
+        if (first is last) {
+            first = last = null;
+        } else if (!isEmpty()) {
             first = first.next;
-        } }
+        }
+    }
 
     void deleteNth(int N) {
         if (N == 0) {
@@ -75,6 +95,7 @@ class DoubleNode(Item) {
 
 class DoublyLinkedList(Item) {
     DoubleNode!Item first;
+    DoubleNode!Item last;
 
     void addBeginning(Item i) {
         auto oldfirst = first;

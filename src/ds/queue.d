@@ -3,20 +3,11 @@ module ds.queue;
 import ds.linked_list;
 
 class LLQueue(Item) {
-    private Node!Item first;
-    private Node!Item last;
+    private LinkedList!Item list;
     private int N;
 
     void enqueue(Item item) {
-        Node!Item oldlast = last;
-        last = new Node!Item(item);
-
-        if (isEmpty()) {
-            first = last;
-        } else  {
-            oldlast.next = last;
-        }
-
+        list.addEnd(item);
         N += 1;
     }
 
@@ -25,17 +16,14 @@ class LLQueue(Item) {
     // for isEmpty. if we dequeue and the result is empty queue and then enqueue
     // something, what happens?
     Item dequeue() {
-        auto nextItem = first.item;
-        first = first.next;
-        if(isEmpty()) {
-            last = null;
-        }
+        auto nextItem = list.first.item;
+        list.deleteBeginning();
         N -= 1;
         return nextItem;
     }
 
-    boolean isEmpty() {
-        return first == null;
+    bool isEmpty() {
+        return list.isEmpty();
     }
 
     int size() {

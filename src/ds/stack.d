@@ -19,7 +19,7 @@ class LLStack(Item) {
     }
 
     bool isEmpty() {
-        return list.first is null;
+        return list.isEmpty();
     }
 
     int size() {
