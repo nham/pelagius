@@ -1,3 +1,4 @@
-*.o
-stats
-binary_search
+*
+!*/
+!*.d
+!*.md
