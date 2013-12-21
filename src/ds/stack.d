@@ -1,14 +1,8 @@
-import std.stdio, ds.linked_list;
+module ds.stack;
 
-void main() {
-    auto x = new ArrayStack!int;
-    x.push(2);
-    x.push(3);
-    x.push(4);
-    x.push(5);
-    writeln(x.size());
+import std.stdio, 
+       ds.linked_list;
 
-}
 class LLStack(Item) {
     private Node!Item first;
     private int N;
@@ -36,6 +30,7 @@ class LLStack(Item) {
         return N;
     }
 }
+
 
 class ArrayStack(Item) {
     private Item[] stack;
@@ -65,4 +60,12 @@ class ArrayStack(Item) {
     int size() {
         return N;
     }
+}
+
+unittest {
+    auto x = new ArrayStack!int;
+    x.push(2);
+    x.push(3);
+    x.push(4);
+    x.push(5);
 }
