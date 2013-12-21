@@ -1,3 +1,5 @@
+module ds.queue;
+
 import ds.linked_list;
 
 class LLQueue(Item) {

@@ -1,3 +1,5 @@
+module ds.bag;
+
 import ds.queue;
 class Bag(Item) {
     private LLQueue!Item bag = new LLQueue!Item;

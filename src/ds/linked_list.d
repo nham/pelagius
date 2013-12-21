@@ -1,3 +1,5 @@
+module ds.linked_list;
+
 class Node(Item) {
     Item item;
     Node!Item next;
