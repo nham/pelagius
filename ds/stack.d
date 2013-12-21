@@ -10,12 +10,12 @@ void main() {
 
 }
 class LLStack(Item) {
-    private LinkedList!Item first;
+    private Node!Item first;
     private int N;
 
     void push(Item item) {
         auto oldfirst = first;
-        first = new LinkedList!Item(item);
+        first = new Node!Item(item);
         first.next = oldfirst;
 
         N += 1;
